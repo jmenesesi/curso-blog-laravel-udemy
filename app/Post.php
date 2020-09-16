@@ -14,7 +14,8 @@ class Post extends Model
         'body',
         'iframe',
         'published_at',
-        'category_id'
+        'category_id',
+        'user_id'
     ];
 
     protected $dates = ['published_at'];
@@ -55,11 +56,23 @@ class Post extends Model
         return $this->hasMany(Photo::class);
     }
 
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function scopePublished($query)
     {
     	$query->whereNotNull('published_at')
     		->where('published_at', '<=', Carbon::now())
     		->latest('published_at');
+    }
+
+
+    public function isPublished()
+    {
+        return (bool) ! is_null($this->published_at) && $this->published_at < today();
     }
 
     public function setTitleAttribute($title)
@@ -99,4 +112,6 @@ class Post extends Model
         $this->url = $url;
         $this->save();
     }
+
+
 }

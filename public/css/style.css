@@ -92,10 +92,7 @@ header nav li a:hover{
 }
 .masonry .gallery-image {
     display: inline-block;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 4px;
-    border: 1px solid #000;
+    width: 100%;   
 }
 cite, .cite{
 	font-size: 22px;
@@ -308,4 +305,10 @@ a.btn-bar{
 }
 .gallery-photos {
 	overflow: hidden;
+}
+
+.img-bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
