@@ -11,16 +11,11 @@
         @foreach($posts as $post)
 
         <article class="post">
-            @if($post->photos->count() == 1)
-                @include('posts.photo')
-            @elseif($post->photos->count() > 1)
-                @include('posts.carousel-preview')
-            @elseif($post->iframe) 
-            
-            <div class="video">
-               {!! $post->iframe !!} 
-            </div>
+            @if($post->viewType('home'))
+                @include($post->viewType('home'))
             @endif
+            
+
             <div class="content-post">
                 @include('posts.header')
                 <h1>{{ $post->title }}</h1>

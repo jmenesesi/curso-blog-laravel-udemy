@@ -22,6 +22,7 @@ class Post extends Model
 
     public static function create(array $attributes=[])
     {
+        $attributes['user_id'] = auth()->id();
         $post = static::query()->create($attributes);
 
         $post->generateUrl();
@@ -113,5 +114,15 @@ class Post extends Model
         $this->save();
     }
 
+    public function viewType($home = '')
+    {
+        if($this->photos->count() == 1)
+                return 'posts.photo';
+        else if($this->photos->count() > 1)
+                return $home == 'home' ? 'posts.carousel-preview' : 'posts.carousel';
+        else if($this->iframe) 
+                return 'posts.iframe';
+        return null;
+    }
 
 }

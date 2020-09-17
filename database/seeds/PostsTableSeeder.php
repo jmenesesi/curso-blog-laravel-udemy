@@ -44,7 +44,7 @@ class PostsTableSeeder extends Seeder
         $post->body = 'Ullamco magna dolor laborum est laborum est eu reprehenderit ut aliquip in exercitation exercitation aliquip ut ad velit aliquip qui ex do enim tempor veniam sit mollit excepteur consectetur officia in nisi magna eiusmod in non eu anim quis nisi ex tempor enim mollit incididunt consectetur enim dolor in mollit magna elit do dolore adipisicing ut enim reprehenderit excepteur anim irure qui dolore in nostrud dolore id cupidatat amet elit enim dolore duis do incididunt irure ex exercitation cillum adipisicing ex dolor sed labore voluptate aute officia voluptate proident non laboris labore cillum sed cupidatat aliqua fugiat nostrud reprehenderit ex incididunt in culpa laborum sunt voluptate dolor pariatur nisi do in aliquip tempor eiusmod reprehenderit sint aliqua qui dolor anim adipisicing ut elit cupidatat eu velit elit laboris sed eu dolore eiusmod duis.';
         $post->published_at = Carbon::now()->subDays(3);
         $post->category_id = 3;
-        $post->user_id = 1;
+        $post->user_id = 2;
         $post->save();
     }
 }

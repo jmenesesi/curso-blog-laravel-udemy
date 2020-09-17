@@ -18,6 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Theme style -->
   <link rel="stylesheet" href="/AdminLTE/css/adminlte.min.css">
+  <link rel="stylesheet" href="/AdminLTE/css/styles.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -142,6 +143,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
             class="fas fa-th-large"></i></a>
       </li>
+      <li class="nav-item dropdown user user-menu">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <img src="/AdminLTE/img/user1-128x128.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{auth()->user()->name}}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="/AdminLTE/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                <p>
+                  {{auth()->user()->name}} - Web Developer
+                  <small>Member since Nov. 2012</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-sm-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-sm-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-sm-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <form method="POST" action="{{ route('logout') }}">
+                  {{ csrf_field() }}
+                    <button class="btn btn-default btn-block btn-flat">Salir</button> 
+                  
+                </form>
+              </li>
+            </ul>
+          </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -150,9 +191,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin.home')}}" class="brand-link">
-      <img src="/AdminLTE/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="/AdminLTE/img/AdminLTELogo.png" alt="{{ config('app.name')}} Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">{{ config('app.name')}}</span>
     </a>
 
     <!-- Sidebar -->

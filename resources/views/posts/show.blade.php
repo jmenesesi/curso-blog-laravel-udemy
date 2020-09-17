@@ -6,17 +6,11 @@
 
 @section('content')
 	<article class="post container">
-    @if ($post->photos->count() == 1)
-        @include('posts.photo')
+    
+    @if($post->viewType())
+        @include($post->viewType())
     @endif
-    @if ($post->photos->count() > 1)
-      @include('posts.carousel')
-    @elseif($post->iframe) 
             
-    <div class="video">
-       {!! $post->iframe !!} 
-    </div>
-    @endif
     <div class="content-post">
       @include('posts.header')
       <h1>{{ $post->title }}</h1>
