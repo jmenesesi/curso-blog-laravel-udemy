@@ -155,14 +155,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <p>
                   {{auth()->user()->name}} - {{ auth()->user()->getRolesDisplayName() }}
-                  <small>Member since Nov. 2012</small>
+                  <small>Miembro desde {{ optional(auth()->user()->created_at)->diffForHumans()}}</small>
                 </p>
               </li>
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
                   <div class="col-sm-4 text-center">
-                    <a href="#">Followers</a>
+                    <a href="{{ route('admin.users.show', auth()->user())}}">Perfil</a>
                   </div>
                   <div class="col-sm-4 text-center">
                     <a href="#">Sales</a>
@@ -204,7 +204,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="/AdminLTE/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{auth()->user()->name}}</a>
+          <a href="{{ route('admin.users.show', auth()->user())}}" class="d-block">{{auth()->user()->name}}</a>
         </div>
       </div>
 

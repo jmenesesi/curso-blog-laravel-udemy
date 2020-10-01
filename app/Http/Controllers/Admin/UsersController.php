@@ -128,4 +128,17 @@ class UsersController extends Controller
         $user->delete();
         return back()->withFlash('Usuario eliminado.');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile(User $user)
+    {
+        
+        $user = auth()->user();
+        return view('admin.users.show', compact('user'));
+    }
 }

@@ -8,7 +8,7 @@
         @endif
 
 
-        @foreach($posts as $post)
+        @forelse($posts as $post)
 
         <article class="post">
             @if($post->viewType('home'))
@@ -30,13 +30,17 @@
             </div>
 
         </article>
+        @empty
+        <div class="content-post">
+                <h1>No hay publicaciones para mostrar.</h1>
+            </div>
 
-        @endforeach
+        @endforelse
 
     </section><!-- fin del div.posts.container -->
 
     <div class="container container-flex">
-        {{$posts->links()}}
+        {{$posts->appends(request()->all())->links()}}
     </div>
     
 
