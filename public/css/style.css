@@ -321,3 +321,9 @@ a.btn-bar{
 .pull-right {
 	float: right!important;
 }
+
+
+.nav-sidebar .menu-open > .nav-link i.right {
+  -webkit-transform: rotate(90deg)!important;
+  transform: rotate(90deg)!important;
+}

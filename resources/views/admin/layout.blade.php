@@ -154,7 +154,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <img src="/AdminLTE/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  {{auth()->user()->name}} - Web Developer
+                  {{auth()->user()->name}} - {{ auth()->user()->getRolesDisplayName() }}
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>

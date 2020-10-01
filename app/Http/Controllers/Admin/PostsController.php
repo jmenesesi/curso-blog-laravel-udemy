@@ -9,7 +9,7 @@ use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
-
+ 
 class PostsController extends Controller
 {
 
@@ -21,7 +21,7 @@ class PostsController extends Controller
     public function index() 
     {
 
-    	$posts = auth()->user()->posts;
+    	$posts = Post::allowed()->get();
     	return view('admin.posts.index', compact('posts'));
     }
 
@@ -44,7 +44,7 @@ class PostsController extends Controller
 
     public function edit(Post $post) 
     {
-        $this->authorize('view', $post);
+        $this->authorize('update', $post);
 
         return view('admin.posts.edit', [
             'post' => $post,

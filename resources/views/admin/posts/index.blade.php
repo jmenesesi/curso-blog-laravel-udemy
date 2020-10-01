@@ -21,9 +21,11 @@
 <div class="card">
 	<div class="card-header">
 	  <h3 class="card-title">Listado de publicaciones</h3>
+	  @can('create', new App\Post)
 	  <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#newPostModal">
 	  	<i class="fa fa-plus"></i> Crear publicación
 	  </button>
+	  @endcan
 	</div>
 	<!-- /.card-header -->
 	<div class="card-body">
@@ -43,13 +45,21 @@
     			<td>{{ $post->title }}</td>
     			<td>{{ $post->excerpt }}</td>
     			<td>
+    				@can('view', $post)
     				<a href="{{ route('post.show', $post)}}" target="blank" class="btn btn-xs btn-default"><i class="fa fa-eye"></i></a>
+    				@endcan
+
+    				@can('update', $post)
     				<a href="{{ route('admin.posts.edit', $post)}}" class="btn btn-xs btn-info"><i class="fa fa-pencil-alt"></i></a>
+    				@endcan
+
+    				@can('delete', $post)
     				<form method="POST" action="{{ route('admin.posts.destroy', $post) }}" style="display: inline;">
     					{{csrf_field()}} {{method_field('DELETE')}}
 
     					<button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('¿Estas seguro que deseas eliminar la publicación?')"><i class="fa fa-trash"></i></button>
     				</form>
+    				@endcan
     			</td>
     		</tr>
     	@endforeach
