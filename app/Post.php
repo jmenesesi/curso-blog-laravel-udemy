@@ -20,6 +20,8 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
+    //protected $with = ['category','tags', 'owner', 'photos'];
+
     public static function create(array $attributes=[])
     {
         $attributes['user_id'] = auth()->id();
@@ -65,7 +67,8 @@ class Post extends Model
 
     public function scopePublished($query)
     {
-    	$query->whereNotNull('published_at')
+    	$query->with(['category','tags', 'owner', 'photos'])
+            ->whereNotNull('published_at')
     		->where('published_at', '<=', Carbon::now())
     		->latest('published_at');
     }

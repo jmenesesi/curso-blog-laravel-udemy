@@ -11,5 +11,11 @@ const del = require('del');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css').version();
+mix.js('resources/assets/js/app.js', 'public/js');
+
+mix.browserSync({
+	proxy: 'http://blog.test',
+	open: false
+});
+
+mix.disableNotifications();

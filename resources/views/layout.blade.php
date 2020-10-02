@@ -53,6 +53,7 @@
 			</div>
 		</footer>
 	</section>
+	<script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
 	@stack('scripts')
 </body>
 </html>
