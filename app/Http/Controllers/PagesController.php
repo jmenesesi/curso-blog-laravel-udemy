@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+
+    public function spa()
+    {
+        return view('pages.spa');
+    }
+
     public function home() 
     {
         $query = Post::published();
@@ -22,6 +28,11 @@ class PagesController extends Controller
         }
 
     	$posts = $query->paginate();
+
+        if(request()->wantsJson()) {
+            return $posts;
+        }
+        
     	return view('pages.home', compact('posts'));
     }
 
@@ -46,4 +57,6 @@ class PagesController extends Controller
     {
     	return view('pages.contact');
     }
+
+    
 }

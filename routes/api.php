@@ -31,4 +31,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'admin'], function () {
 	Route::get('posts', 'Api\Admin\PostsController@index');
 });
 
+Route::get('posts', 'PagesController@home');
+Route::get('posts/{post}', 'PostsController@show');
+
 

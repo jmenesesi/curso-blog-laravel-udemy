@@ -20,6 +20,8 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
+    protected $appends = ['published_date'];
+
     //protected $with = ['category','tags', 'owner', 'photos'];
 
     public static function create(array $attributes=[])
@@ -114,6 +116,11 @@ class Post extends Model
     public function setCategoryIdAttribute($category)
     {
         $this->attributes['category_id'] = Category::find($category)  ? $category : Category::create(['name' => $category])->id; ;
+    }
+
+    public function getPublishedDateAttribute()
+    {
+        return optional($this->published_at)->diffForHumans();   
     }
 
     public function syncTags($tags)

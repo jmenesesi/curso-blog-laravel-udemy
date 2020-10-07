@@ -15,7 +15,7 @@
     return new App\Mail\LoginCredentials(App\User::first(), 'asdfasfd');
 });*/
 
-Route::get('/', 'PagesController@home')->name('pages.home');
+Route::get('/', 'PagesController@spa')->name('pages.home');
 Route::get('about', 'PagesController@about')->name('pages.about');
 Route::get('archive', 'PagesController@archive')->name('pages.archive');
 Route::get('contact', 'PagesController@contact')->name('pages.contact');
@@ -24,9 +24,6 @@ Route::get('article/{post}', 'PostsController@show')->name('post.show');
 Route::get('categorias/{category}', 'CategoriesController@show')->name('categories.show');
 Route::get('tags/{tag}', 'TagsController@show')->name('tags.show');
 
-Route::get('posts', function () {
-    return App\Post::all();
-});
 
 Route::group(
 	[

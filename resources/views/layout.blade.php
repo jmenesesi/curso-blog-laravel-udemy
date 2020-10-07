@@ -8,6 +8,7 @@
 	<meta name="og:title" content="Jmenesesi | @yield('meta-title', 'Home')">
 	<meta name="description" content="@yield('meta-description', 'Jmenesesi')">
 	<meta name="og:description" content="@yield('meta-description', 'Jmenesesi')">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="stylesheet" href="/css/normalize.css">
 	<link rel="stylesheet" href="/css/framework.css">
 	<link rel="stylesheet" href="/css/style.css">
@@ -18,7 +19,8 @@
 	
 </head>
 <body>
-	<div class="preload"></div>
+	<div id="app">
+		<div class="preload"></div>
 	<header class="space-inter">
 		<div class="container container-flex space-between">
 			<figure class="logo"><img src="/img/logo.png" alt=""></figure>
@@ -53,6 +55,7 @@
 			</div>
 		</footer>
 	</section>
+	</div>
 	<script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
 	@stack('scripts')
 </body>
