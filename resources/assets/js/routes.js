@@ -30,7 +30,26 @@ export default new Router({
 		{
 			name: 'show_post',
 			path: '/article/:url', 
-			component: require('./views/Post')
+			component: require('./views/Post'),
+			props: true
+		},
+		{
+			name: 'categories_post',
+			path: '/categories/:category', 
+			component: require('./views/CategoriesPost'),
+			props: true
+		},
+		{
+			name: 'tags_post',
+			path: '/tags/:tag', 
+			component: require('./views/TagsPost'),
+			props: true
+		},
+		{
+			name: 'post_date',
+			path: '/blog/:year/:month', 
+			component: require('./views/PostByDate'),
+			props: true
 		},
 		{
 			path: '*', 
@@ -38,5 +57,9 @@ export default new Router({
 		}
 	],
 	linkExactActiveClass: 'active',
-	linkActiveClass: 'active-route'
+	linkActiveClass: 'active-route',
+	mode: 'history',
+    scrollBehavior(){
+        return {x:0, y:0}
+    }
 });

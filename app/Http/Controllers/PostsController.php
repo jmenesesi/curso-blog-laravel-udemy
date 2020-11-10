@@ -11,6 +11,7 @@ class PostsController extends Controller
     {
 
     	if($post->isPublished() || auth()->check()) {
+    		$post->load('category','tags', 'owner', 'photos');
     		if(request()->wantsJson()) {
             	return $post;
         	}

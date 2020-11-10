@@ -27,7 +27,7 @@ class PagesController extends Controller
             $query->whereYear('published_at', request('year'));
         }
 
-    	$posts = $query->paginate();
+    	$posts = $query->paginate(4);
 
         if(request()->wantsJson()) {
             return $posts;
@@ -43,14 +43,18 @@ class PagesController extends Controller
 
     public function archive() 
     {
-        $archive =  Post::published()->byYearAndMonth()->get();
-
-    	return view('pages.archive', [
+        $data = [
             'authors' => User::latest()->take(4)->get(),
             'categories' => Category::all(),
             'posts' => Post::latest('published_at')->take(5)->get(),
-            'archive' => $archive
-        ]);
+            'archive' => Post::published()->byYearAndMonth()->get()
+        ];
+
+
+        if(request()->wantsJson()) {
+            return $data;
+        }
+    	return view('pages.archive', $data);
     }
 
     public function contact() 
